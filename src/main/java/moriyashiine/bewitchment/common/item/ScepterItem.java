@@ -22,6 +22,7 @@ import net.minecraft.potion.PotionUtil;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -100,7 +101,7 @@ public class ScepterItem extends Item {
 		if (stack.hasNbt()) {
 			uses = stack.getNbt().getInt("PotionUses");
 		}
-		tooltip.add(Text.translatable(Bewitchment.MODID + ".tooltip.uses_left", uses).formatted(Formatting.GRAY));
+		tooltip.add(new TranslatableText(Bewitchment.MODID + ".tooltip.uses_left", uses).formatted(Formatting.GRAY));
 		PotionUtil.buildTooltip(stack, tooltip, 1);
 	}
 }

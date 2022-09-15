@@ -141,7 +141,7 @@ public class BroomEntity extends Entity {
 	}
 
 	@Override
-	public boolean canHit() {
+	public boolean collides() {
 		return !isRemoved();
 	}
 

@@ -26,7 +26,7 @@ public class DemonEntityRenderer extends MobEntityRenderer<DemonEntity, DemonEnt
 
 	public DemonEntityRenderer(EntityRendererFactory.Context context) {
 		super(context, new DemonEntityModel<>(context.getPart(BewitchmentClient.MALE_DEMON_MODEL_LAYER), true), 0.5f);
-		addFeature(new HeldItemFeatureRenderer<>(this, context.getHeldItemRenderer()));
+		addFeature(new HeldItemFeatureRenderer<>(this));
 		MALE_MODEL = model;
 		FEMALE_MODEL = new DemonEntityModel<>(context.getPart(BewitchmentClient.FEMALE_DEMON_MODEL_LAYER), false);
 	}

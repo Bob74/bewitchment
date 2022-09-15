@@ -20,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.*;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
@@ -80,8 +81,8 @@ public class ContractItem extends Item {
 	@Override
 	public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
 		if (stack.hasNbt() && stack.getOrCreateNbt().contains("Contract")) {
-			tooltip.add(Text.translatable("contract." + stack.getOrCreateNbt().getString("Contract").replace(":", ".")).formatted(Formatting.DARK_RED));
-			tooltip.add(Text.translatable(Bewitchment.MODID + ".tooltip.days", stack.getOrCreateNbt().getInt("Duration") / 24000).formatted(Formatting.DARK_RED));
+			tooltip.add(new TranslatableText("contract." + stack.getOrCreateNbt().getString("Contract").replace(":", ".")).formatted(Formatting.DARK_RED));
+			tooltip.add(new TranslatableText(Bewitchment.MODID + ".tooltip.days", stack.getOrCreateNbt().getInt("Duration") / 24000).formatted(Formatting.DARK_RED));
 		}
 	}
 }

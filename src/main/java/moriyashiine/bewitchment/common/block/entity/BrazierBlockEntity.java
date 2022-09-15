@@ -9,7 +9,6 @@ import moriyashiine.bewitchment.api.BewitchmentAPI;
 import moriyashiine.bewitchment.api.block.entity.UsesAltarPower;
 import moriyashiine.bewitchment.api.misc.PoppetData;
 import moriyashiine.bewitchment.api.registry.Curse;
-import moriyashiine.bewitchment.common.BWConfig;
 import moriyashiine.bewitchment.common.Bewitchment;
 import moriyashiine.bewitchment.common.item.TaglockItem;
 import moriyashiine.bewitchment.common.recipe.CurseRecipe;
@@ -35,7 +34,7 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.Properties;
-import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.collection.DefaultedList;
@@ -117,7 +116,7 @@ public class BrazierBlockEntity extends BlockEntity implements Inventory, UsesAl
 			if (!blockEntity.loaded) {
 				if (!world.isClient && state.get(Properties.LIT)) {
 					blockEntity.incenseRecipe = world.getRecipeManager().listAllOfType(BWRecipeTypes.INCENSE_RECIPE_TYPE).stream().filter(recipe -> recipe.matches(blockEntity, world)).findFirst().orElse(null);
-					if (BWConfig.enableCurses) {
+					if (Bewitchment.config.enableCurses) {
 						blockEntity.curseRecipe = world.getRecipeManager().listAllOfType(BWRecipeTypes.CURSE_RECIPE_TYPE).stream().filter(recipe -> recipe.matches(blockEntity, world)).findFirst().orElse(null);
 					}
 					blockEntity.hasIncense = blockEntity.incenseRecipe != null;
@@ -173,13 +172,13 @@ public class BrazierBlockEntity extends BlockEntity implements Inventory, UsesAl
 											break;
 										}
 									}
-									closestPlayer.sendMessage(Text.translatable(Bewitchment.MODID + ".message.invalid_entity", entityName), true);
+									closestPlayer.sendMessage(new TranslatableText(Bewitchment.MODID + ".message.invalid_entity", entityName), true);
 								}
 							}
 						} else {
 							if (closestPlayer != null) {
 								world.playSound(null, pos, BWSoundEvents.BLOCK_BRAZIER_FAIL, SoundCategory.BLOCKS, 1, 1);
-								closestPlayer.sendMessage(Text.translatable(Bewitchment.MODID + ".message.insufficent_altar_power"), true);
+								closestPlayer.sendMessage(new TranslatableText(Bewitchment.MODID + ".message.insufficent_altar_power"), true);
 							}
 						}
 					}
@@ -267,7 +266,7 @@ public class BrazierBlockEntity extends BlockEntity implements Inventory, UsesAl
 						timer = -6000;
 						hasIncense = true;
 						syncBrazier();
-					} else if (BWConfig.enableCurses) {
+					} else if (Bewitchment.config.enableCurses) {
 						CurseRecipe foundCurseRecipe = world.getRecipeManager().listAllOfType(BWRecipeTypes.CURSE_RECIPE_TYPE).stream().filter(recipe -> recipe.matches(this, world)).findFirst().orElse(null);
 						if (foundCurseRecipe != null && getTarget() != null) {
 							curseRecipe = foundCurseRecipe;

@@ -21,7 +21,7 @@ public class HerneEntityRenderer extends MobEntityRenderer<HerneEntity, HerneEnt
 
 	public HerneEntityRenderer(EntityRendererFactory.Context context) {
 		super(context, new HerneEntityModel<>(context.getPart(BewitchmentClient.HERNE_MODEL_LAYER)), 0.5f);
-		addFeature(new HeldItemFeatureRenderer<>(this, context.getHeldItemRenderer()));
+		addFeature(new HeldItemFeatureRenderer<>(this));
 	}
 
 	@Override

@@ -12,6 +12,7 @@ import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -31,7 +32,7 @@ public class PricklyBeltItem extends TrinketItem {
 		if (stack.hasNbt()) {
 			uses = stack.getNbt().getInt("PotionUses");
 		}
-		tooltip.add(Text.translatable(Bewitchment.MODID + ".tooltip.uses_left", uses).formatted(Formatting.GRAY));
+		tooltip.add(new TranslatableText(Bewitchment.MODID + ".tooltip.uses_left", uses).formatted(Formatting.GRAY));
 		PotionUtil.buildTooltip(stack, tooltip, 1);
 	}
 }
