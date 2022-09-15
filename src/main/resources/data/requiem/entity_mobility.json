@@ -10,6 +10,6 @@
 	"phasesThroughWalls": true
   },
   "bewitchment:toad": {
-	"walkMode": "JUMPY"
+    "walkMode": "JUMPY"
   }
 }
