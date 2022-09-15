@@ -1,3 +1,5 @@
+Original mod: https://github.com/MoriyaShiine/bewitchment
+
 This is a modification for Bewitchment 1.18.2-22 fixing some issues and adding 1.19 fixes that can be ported.
 
 ## Fixed
